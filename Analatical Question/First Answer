@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+class vowels
+{
+public static void main(String args[])
+{
+try
+{
+int i,count=0;
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter the String: ");
+String str1=sc.nextLine();
+String f=str1.toLowerCase();
+char e[]=f.toCharArray();
+for(i=0;i<str1.length();i++)
+{
+if(e[i]=='a'||e[i]=='e'||e[i]=='i'||e[i]=='o'||e[i]=='u')
+{
+count=count+1;
+}
+}
+System.out.println("The number of vowels in the given string "+str1+" is "+count);
+}
+catch(Exception e)
+{
+System.out.println("Invalid");
+}
+}
+}
