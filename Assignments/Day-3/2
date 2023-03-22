@@ -1,0 +1,35 @@
+public class MultiplicationTable implements Runnable {
+    private int number;
+
+    public MultiplicationTable(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread " + Thread.currentThread().getId() + " started.");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(number + " x " + i + " = " + (number * i));
+        }
+        System.out.println("Thread " + Thread.currentThread().getId() + " finished.");
+    }
+
+    public static void main(String[] args) {
+        MultiplicationTable table5 = new MultiplicationTable(5);
+        Thread thread1 = new Thread(table5);
+        MultiplicationTable table10 = new MultiplicationTable(10);
+        Thread thread2 = new Thread(table10);
+        System.out.println("Starting threads...");
+        thread1.start();
+        thread2.start();
+        System.out.println("Threads started.");
+        try {
+            System.out.println("Waiting for threads to finish...");
+            thread1.join();
+            thread2.join();
+            System.out.println("Threads finished.");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
